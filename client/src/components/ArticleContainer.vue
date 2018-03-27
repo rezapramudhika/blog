@@ -31,13 +31,13 @@ export default {
   },
   methods: {
     fetchData: () => {
-      axios.get(`http://localhost:3000/articles/${this.$route.params.id}`, {}).then((data) => {
+      axios.get(`https://blog-server.rezapramudhika.com/articles/${this.$route.params.id}`, {}).then((data) => {
         this.article = data.data.data
       })
     }
   },
   created: function () {
-    axios.get('http://localhost:3000/articles/', {}).then((data) => {
+    axios.get('https://blog-server.rezapramudhika.com/articles/', {}).then((data) => {
       console.log(data)
       this.articles = data.data.data
     })
@@ -50,5 +50,8 @@ export default {
     .panel-body {
         text-align: left;
         cursor: pointer;
+    }
+    ul {
+    -webkit-padding-start: 0px;
     }
 </style>

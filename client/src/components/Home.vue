@@ -1,6 +1,5 @@
 <template>
     <div class="container">
-        <!-- <router-view></router-view> -->
         <article-list></article-list>
         <div class="col-xs-5 col-sm-5 col-sm-4">
             <div class="panel panel-info">
@@ -35,7 +34,7 @@ export default {
   },
   methods: {
     fetchData: () => {
-      axios.get(`http://localhost:3000/articles/${this.$route.params.id}`, {}).then((data) => {
+      axios.get(`https://blog-server.rezapramudhika.com/articles/${this.$route.params.id}`, {}).then((data) => {
         this.article = data.data.data
       })
     }
@@ -45,7 +44,7 @@ export default {
       title: 'Loading...',
       onOpen: () => {
         swal.showLoading()
-        axios.get('http://localhost:3000/articles/', {}).then((data) => {
+        axios.get('https://blog-server.rezapramudhika.com/articles/', {}).then((data) => {
           swal.hideLoading()
           swal.clickConfirm()
           this.articles = data.data.data
@@ -70,5 +69,8 @@ export default {
     .panel-body {
         text-align: left;
         cursor: pointer;
+    }
+    ul {
+    -webkit-padding-start: 0px;
     }
 </style>

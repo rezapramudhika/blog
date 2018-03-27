@@ -18,4 +18,7 @@ export default {
     .caption {
         text-align: left;
     }
+    li {
+      list-style-type: none;
+    }
 </style>

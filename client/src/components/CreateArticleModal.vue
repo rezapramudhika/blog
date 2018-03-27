@@ -38,7 +38,7 @@ export default {
     createArticle: function () {
       let title = document.querySelector('#title').value
       let body = document.querySelector('#body').value
-      axios.post('http://localhost:3000/articles/', {
+      axios.post('https://blog-server.rezapramudhika.com/articles/', {
         title,
         body
       }).then((data) => {

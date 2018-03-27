@@ -40,7 +40,7 @@ export default {
     editData: function () {
       let title = document.querySelector('#titleEdit').value
       let body = document.querySelector('#bodyEdit').value
-      axios.put(`http://localhost:3000/articles/${this.id}`, {
+      axios.put(`https://blog-server.rezapramudhika.com/articles/${this.id}`, {
         title,
         body
       }).then((data) => {
@@ -59,7 +59,7 @@ export default {
     '$route.params.id': function () {
       if (this.$route.params.id !== undefined) {
         this.id = this.$route.params.id
-        axios.get(`http://localhost:3000/articles/${this.id}`, {}).then((data) => {
+        axios.get(`https://blog-server.rezapramudhika.com/articles/${this.id}`, {}).then((data) => {
           this.article = data.data.data
         })
       }
@@ -68,7 +68,7 @@ export default {
   created: function () {
     if (this.$route.params.id !== undefined) {
       this.id = this.$route.params.id
-      axios.get(`http://localhost:3000/articles/${this.id}`, {}).then((data) => {
+      axios.get(`https://blog-server.rezapramudhika.com/articles/${this.id}`, {}).then((data) => {
         this.article = data.data.data
       })
     }

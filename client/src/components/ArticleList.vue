@@ -22,7 +22,7 @@ export default {
     }
   },
   created: function () {
-    axios.get('http://localhost:3000/articles/', {}).then((data) => {
+    axios.get('https://blog-server.rezapramudhika.com/articles/', {}).then((data) => {
       this.articles = data.data.data
     })
   }

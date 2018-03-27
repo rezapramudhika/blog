@@ -28,12 +28,12 @@ export default {
   },
   methods: {
     fetchData: function () {
-      axios.get(`http://localhost:3000/articles/${this.id}`, {}).then((data) => {
+      axios.get(`https://blog-server.rezapramudhika.com/articles/${this.id}`, {}).then((data) => {
         this.article = data.data.data
       })
     },
     deleteData: function () {
-      axios.delete(`http://localhost:3000/articles/${this.id}`, {}).then((data) => {
+      axios.delete(`https://blog-server.rezapramudhika.com/articles/${this.id}`, {}).then((data) => {
         swal({
           title: 'Are you sure?',
           text: "You won't be able to revert this!",
@@ -62,7 +62,7 @@ export default {
       title: 'Loading...',
       onOpen: () => {
         swal.showLoading()
-        axios.get(`http://localhost:3000/articles/${this.$route.params.id}`, {}).then((data) => {
+        axios.get(`https://blog-server.rezapramudhika.com/articles/${this.$route.params.id}`, {}).then((data) => {
           swal.hideLoading()
           swal.clickConfirm()
           this.articles = data.data.data
@@ -73,14 +73,21 @@ export default {
         })
       }
     })
-    axios.get(`http://localhost:3000/articles/${this.$route.params.id}`, {}).then((data) => {
+    axios.get(`https://blog-server.rezapramudhika.com/articles/${this.$route.params.id}`, {}).then((data) => {
       this.article = data.data.data
     })
   },
   watch: {
     '$route' (to, from) {
-      axios.get(`http://localhost:3000/articles/${to.params.id}`, {}).then((data) => {
+      swal.showLoading()
+      axios.get(`https://blog-server.rezapramudhika.com/articles/${to.params.id}`, {}).then((data) => {
+        swal.hideLoading()
+        swal.clickConfirm()
         this.article = data.data.data
+      }).catch((err) => {
+        console.log(err)
+        swal.hideLoading()
+        swal.clickConfirm()
       })
     }
   }
