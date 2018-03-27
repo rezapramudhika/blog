@@ -16,6 +16,21 @@ module.exports = {
                 })
             })
     },
+    findById: (req, res) => {
+        Article.findById(req.params.id)
+            .exec()
+            .then(data => {
+                res.status(200).json({
+                    message: 'Success get data',
+                    data
+                })
+            })
+            .catch(err => {
+                return res.status(500).json({
+                    message: 'Internal server error'
+                })
+            })
+    },
     create: (req, res) => {
         Article.create({
             title: req.body.title,
@@ -35,6 +50,7 @@ module.exports = {
     update: (req, res) => {
         Article.findByIdAndUpdate(req.params.id, req.body, {new :true}, (err, data) => {
             if (err) {
+                console.log(err)
                 return res.status(500).json({
                     message: 'Internal server error'
                 })
